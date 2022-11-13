@@ -1,0 +1,5 @@
+.note {
+    border: 1px solid blue;
+    padding: 15px 0px;
+    box-shadow: 4px 4px 1px 1px rgba(12, 40, 255, 0.2);
+}

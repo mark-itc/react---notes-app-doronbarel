@@ -1,0 +1,14 @@
+.notesForm {
+    padding: 20px 0px;
+}
+
+.notes {
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+}
+
+.noteId {
+    font-weight: bold;
+}
