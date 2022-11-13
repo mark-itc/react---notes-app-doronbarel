@@ -2,7 +2,7 @@ import './Note.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
-function Note({ id, text, date, deleteNote }) {
+function Note({ id, title, text, date, deleteNote }) {
   return (
     <div className="note">
       <div className="noteHeader">
@@ -12,6 +12,9 @@ function Note({ id, text, date, deleteNote }) {
         <div className="deleteNote" onClick={() => deleteNote(id)}>
           <FontAwesomeIcon icon={faTrash} />
         </div>
+      </div>
+      <div className="noteTitle">
+        {title}
       </div>
       <div className="noteText">
         {text} (#{id + 1})

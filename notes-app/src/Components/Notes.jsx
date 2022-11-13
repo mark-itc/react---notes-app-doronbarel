@@ -12,6 +12,7 @@ function Notes() {
       ...prevState,
         {
             id: noteCounter,
+            title: 'Note title',
             text: 'Example note',
             date: new Date().toLocaleString('en-US', {
               day: 'numeric',
@@ -43,6 +44,7 @@ function Notes() {
         <Note
           key={note.id}
           id={note.id}
+          title={note.title}
           text={note.text}
           date={note.date}
           deleteNote={deleteNote}
