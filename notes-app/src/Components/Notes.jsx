@@ -5,15 +5,32 @@ import './Notes.css';
 
 function Notes() {
   const [notes, setNotes] = useState([]);
+  const [noteCounter, setNoteCounter] = useState(0);
 
   const addNoteHandler = () => {
     setNotes((prevState) => [
       ...prevState,
         {
+            id: noteCounter,
             text: 'Example note',
-            date: new Date().toLocaleString()
+            date: new Date().toLocaleString('en-US', {
+              day: 'numeric',
+              year: 'numeric',
+              month: 'short',
+              hour: 'numeric',
+              minute: 'numeric',
+              second: 'numeric'
+          })
         }
     ]);
+    setNoteCounter(noteCounter + 1);
+  };
+
+  const deleteNote = (id) => {
+    if (window.confirm("Are you sure you want to delete your note?")) {
+      const remainingNotes = notes.filter((note) => note.id !== id);
+      setNotes(remainingNotes);
+    }
   };
 
   return (
@@ -22,12 +39,13 @@ function Notes() {
       <AddNote addNoteHandler={addNoteHandler}/>
     </div>
     <div className="notes">
-      {notes.map((note, index) => (
+      {notes.map((note) => (
         <Note
-          key={index}
-          id={index + 1}
+          key={note.id}
+          id={note.id}
           text={note.text}
           date={note.date}
+          deleteNote={deleteNote}
         />
       ))}
     </div>

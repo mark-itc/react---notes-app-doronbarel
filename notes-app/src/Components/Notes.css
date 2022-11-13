@@ -8,7 +8,3 @@
     grid-gap: 1rem;
     grid-template-columns: repeat(3, minmax(300px, 1fr));
 }
-
-.noteId {
-    font-weight: bold;
-}

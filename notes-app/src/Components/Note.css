@@ -3,3 +3,19 @@
     padding: 15px 0px;
     box-shadow: 4px 4px 1px 1px rgba(12, 40, 255, 0.2);
 }
+
+.noteHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 10px 10px 10px;
+    font-size: 0.75rem;
+}
+
+.deleteNote {
+    width: auto;
+}
+
+.noteId {
+    font-weight: bold;
+}
