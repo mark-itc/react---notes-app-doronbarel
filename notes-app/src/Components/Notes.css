@@ -8,3 +8,29 @@
     grid-gap: 1rem;
     grid-template-columns: repeat(3, minmax(300px, 1fr));
 }
+
+.closeNote {
+    margin-left: 5px;
+}
+.ReactModal__Content {
+    text-align: center;
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    transform: translate(250%, 100%);
+    border: 0px !important;
+}
+
+.ReactModal__Overlay {
+    background-color: rgba(84, 84, 84, 0.75) !important;
+}
+
+.deleteNote:hover, .closeNote:hover {
+    color: red;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.noteBody:hover {
+    cursor: pointer;
+}

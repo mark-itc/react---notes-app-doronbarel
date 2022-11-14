@@ -1,11 +1,16 @@
 import { useState } from "react";
+import Modal from 'react-modal';
 import Note from "./Note";
 import AddNote from "./AddNote";
 import './Notes.css';
 
+Modal.setAppElement('#root');
+
 function Notes() {
   const [notes, setNotes] = useState([]);
   const [noteCounter, setNoteCounter] = useState(0);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalNote, setModalNote] = useState('');
 
   const addNoteHandler = () => {
     setNotes((prevState) => [
@@ -34,8 +39,37 @@ function Notes() {
     }
   };
 
+  const openModal = (id) => {
+    let note = notes.filter((note) => note.id == id);
+    setModalNote(note[0]);
+    setModalIsOpen(true);
+  }
+
+  const closeModal = () => {
+    setModalNote('');
+    setModalIsOpen(false);
+  }
+
   return (
     <>
+    <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+    >
+      { modalIsOpen ? (
+        <Note
+        key={'ModalNote' + modalNote.id}
+        id={modalNote.id}
+        title={modalNote.title}
+        text={modalNote.text}
+        date={modalNote.date}
+        deleteNote={deleteNote}
+        closeNote={closeModal}
+        />
+      ) : ('')
+      }
+      
+    </Modal>
     <div className="notesForm">
       <AddNote addNoteHandler={addNoteHandler}/>
     </div>
@@ -48,6 +82,9 @@ function Notes() {
           text={note.text}
           date={note.date}
           deleteNote={deleteNote}
+          closeNote={closeModal}
+          openModal={openModal}
+          modalIsOpen={modalIsOpen}
         />
       ))}
     </div>
